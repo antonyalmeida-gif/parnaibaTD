@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Delta Defense - Parnaíba-PI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <!-- TELA INICIAL -->
+    <div id="tela-inicial" class="tela ativa">
+        <div class="titulo-principal">
+            <h1>🌊 DELTA DEFENSE 🌊</h1>
+            <h2>Parnaíba - PI</h2>
+            <p class="subtitulo">Defenda os pontos turísticos do Delta do Parnaíba!</p>
+        </div>
+        <button class="btn-grande" onclick="irParaSelecaoPersonagens()">INICIAR AVENTURA</button>
+        <div class="creditos">
+            <p>🏆 7 Fases • 8 Personagens • Troféus Exclusivos</p>
+        </div>
+    </div>
+
+    <!-- TELA DE SELEÇÃO DE PERSONAGENS -->
+    <div id="tela-personagens" class="tela">
+        <h1>Escolha 4 Defensores</h1>
+        <p class="info-selecao">Selecionados: <span id="contador-personagens">0</span>/4</p>
+        <div id="grade-personagens" class="grade-personagens"></div>
+        <div class="acoes">
+            <button class="btn" onclick="voltarInicio()">← Voltar</button>
+            <button class="btn-grande" id="btn-confirmar-personagens" onclick="confirmarPersonagens()" disabled>
+                Confirmar Escolha →
+            </button>
+        </div>
+    </div>
+
+    <!-- TELA DE SELEÇÃO DE FASES -->
+    <div id="tela-fases" class="tela">
+        <h1>🗺️ Pontos Turísticos de Parnaíba</h1>
+        <p class="info-selecao">Troféus conquistados: <span id="contador-trofeus">0</span>/7</p>
+        <div id="grade-fases" class="grade-fases"></div>
+        <div class="acoes">
+            <button class="btn" onclick="voltarParaPersonagens()">← Trocar Personagens</button>
+        </div>
+    </div>
+
+    <!-- TELA DO JOGO -->
+    <div id="tela-jogo" class="tela">
+        <div class="hud">
+            <div class="hud-item">
+                <span class="icone">❤️</span>
+                <span id="hud-vida">100</span>
+            </div>
+            <div class="hud-item">
+                <span class="icone">💰</span>
+                <span id="hud-dinheiro">650</span>
+            </div>
+            <div class="hud-item">
+                <span class="icone">🌊</span>
+                <span>Fase: <span id="hud-fase">1</span></span>
+            </div>
+            <div class="hud-item">
+                <span class="icone">👾</span>
+                <span>Onda: <span id="hud-onda">1</span>/<span id="hud-onda-max">5</span></span>
+            </div>
+            <button class="btn" onclick="pausarJogo()" id="btn-pausar">⏸️ Pausar</button>
+            <button class="btn" onclick="sairDaFase()">🚪 Sair</button>
+        </div>
+
+        <div class="area-jogo">
+            <canvas id="canvas-jogo" width="900" height="600"></canvas>
+            <div class="painel-torres">
+                <h3>🎯 Defensores</h3>
+                <p class="dica-drag">👆 Arraste para o mapa</p>
+                <div id="lista-torres" class="lista-torres"></div>
+                <div class="info-torre" id="info-torre">
+                    <p>Arraste um defensor para o mapa</p>
+                </div>
+                <div id="torre-selecionada-info" class="torre-selecionada-info" style="display:none;">
+                    <h4 id="tsi-nome"></h4>
+                    <div id="tsi-stats"></div>
+                    <button class="btn-vender" onclick="venderTorreSelecionada()">💰 Vender (50%)</button>
+                    <button class="btn" onclick="desselecionarTorre()">✖ Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TELA DE RESULTADO -->
+    <div id="tela-resultado" class="tela">
+        <div id="resultado-conteudo" class="resultado-conteudo"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
